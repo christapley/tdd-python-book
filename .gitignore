@@ -1,2 +1,5 @@
 virtualenv/
 
+*.log
+*.pyc
+*.sqlite3
