@@ -22,6 +22,17 @@
             "args": [
                 "runserver"
             ]
+        },
+        {
+            "name": "Django: test",
+            "type": "python",
+            "cwd": "${workspaceFolder}",
+            "request": "launch",
+            "program": "manage.py",
+            "console": "integratedTerminal",
+            "args": [
+                "test"
+            ]
         }
     ]
 }
