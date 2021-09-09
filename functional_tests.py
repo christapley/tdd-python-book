@@ -33,14 +33,15 @@ class NewVisitorTest(unittest.TestCase):
         # "1: Buy peacock feathers" as an item in a to-do list
         input_box.send_keys(Keys.ENTER)
         time.sleep(1)
-
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(any(row.text == '1: Buy peacock feathers' for row in rows))
+        self.check_for_row_in_list_table('1: Buy peacock feathers')
 
         # There is still a text box inviting her to add another item. She enters "Use peackock feathers
         # to make a fly" (Edith is very methodical)
-        self.fail('Finish the test!')
+        input_box = self.browser.find_element_by_id('id_new_item')
+        input_box.send_keys('Use peackock feathers')
+        input_box.send_keys(Keys.ENTER)
+        time.sleep(1)
+        self.check_for_row_in_list_table('2: Use peackock feathers')
 
         # The page updates again, and now shows both items on her list
 
@@ -50,6 +51,11 @@ class NewVisitorTest(unittest.TestCase):
         # She visits that URL - her to-do list is still there.
 
         # Satisfied, she goes back to sleep
+
+    def check_for_row_in_list_table(self, row_text):
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text, [row.text for row in rows])
 
 
 if __name__ == '__main__':
