@@ -9,8 +9,13 @@
             "type": "python",
             "cwd": "${workspaceFolder}",
             "request": "launch",
-            "program": "functional_tests.py",
-            "console": "integratedTerminal"
+            "program": "manage.py",
+            "console": "integratedTerminal",
+            "args": [
+                "test",
+                "functional_tests"
+            ]
+            
         },
         {
             "name": "Django: runserver",
@@ -31,7 +36,8 @@
             "program": "manage.py",
             "console": "integratedTerminal",
             "args": [
-                "test"
+                "test",
+                "lists"
             ]
         }
     ]
